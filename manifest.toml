@@ -60,7 +60,7 @@ ram.runtime = "50M"
     api.url = "/api"
     api.auth_header = false
     api.show_tile = false
-    api.protected= true
+    api.protected= false
     api.allowed = ["visitors", "all_users"]
     
     [resources.ports]
