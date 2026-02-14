@@ -4,3 +4,7 @@ server:
 
 auth:
   secret: __KEY__
+
+client:
+  baseUrl: https://__DOMAIN__
+  
