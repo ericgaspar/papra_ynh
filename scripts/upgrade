@@ -18,14 +18,16 @@ ynh_systemctl --service="$app" --action="stop"
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env"
+pushd "$install_dir"
+	git pull origin main
+popd
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-ynh_config_add --template="some_config_file" --destination="$install_dir/some_config_file"
+ynh_config_add --template="papra.config.yaml" --destination="$install_dir/apps/papra-server/papra.config.yaml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION
@@ -37,6 +39,19 @@ ynh_config_add_nginx
 ynh_config_add_systemd
 
 yunohost service add "$app" --description="Plateforme d'archivage" --log="/var/log/$app/$app.log"
+
+#=================================================
+# INSTALL PAPRA
+#=================================================
+ynh_script_progression "Installing $app..."
+
+pushd "$install_dir"
+	ynh_hide_warnings corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
+    ynh_hide_warnings pnpm install
+    ynh_hide_warnings pnpm -r build
+    mkdir -p apps/papra-server/public
+	cp -r apps/papra-client/dist/* apps/papra-server/public/
+popd
 
 #=================================================
 # START SYSTEMD SERVICE

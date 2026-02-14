@@ -7,7 +7,6 @@ Type=simple
 User=__APP__
 Group=__APP__
 Environment="PATH=__PATH_WITH_NODEJS__"
-EnvironmentFile=__INSTALL_DIR__/apps/papra-server/.env
 WorkingDirectory=__INSTALL_DIR__/apps/papra-server/
 Environment="NODE_ENV=production"
 ExecStart=__NODEJS_DIR__/pnpm start:with-migrations
