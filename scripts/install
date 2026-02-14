@@ -4,7 +4,6 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -44,7 +43,7 @@ yunohost service add "$app" --description="A short description of the app" --log
 #=================================================
 # INSTALL PAPRA
 #=================================================
-ynh_script_progression "Installing $app and plugins..."
+ynh_script_progression "Installing $app..."
 
 pushd "$install_dir"
 	ynh_hide_warnings corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
