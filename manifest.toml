@@ -41,13 +41,13 @@ ram.runtime = "50M"
 
 [resources]
 
-    [resources.sources]
+    #[resources.sources]
 
-    [resources.sources.main]
-    url = "https://github.com/papra-hq/papra/archive/refs/tags/@papra/app@26.1.0.tar.gz"
-    sha256 = "7111d94f70d53cb449216aac5cd4d998117b17303ae898ef2268a17df58c855c"
+    #[resources.sources.main]
+    #url = "https://github.com/papra-hq/papra/archive/refs/tags/@papra/app@26.1.0.tar.gz"
+    #sha256 = "7111d94f70d53cb449216aac5cd4d998117b17303ae898ef2268a17df58c855c"
 
-    autoupdate.strategy = "latest_github_tag"
+    #autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
