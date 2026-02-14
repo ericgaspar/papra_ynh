@@ -18,7 +18,7 @@ key=$(ynh_string_random --length=48)
 ynh_script_progression "Setting up source files..."
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$install_dir"
+#ynh_setup_source --dest_dir="$install_dir"
 
 git clone https://github.com/papra-hq/papra.git "$install_dir" --quiet
 
