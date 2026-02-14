@@ -1,0 +1,6 @@
+server:
+  servePublicDir: true
+  baseUrl: http://127.0.0.1:__PORT__
+
+auth:
+  secret: __KEY__
